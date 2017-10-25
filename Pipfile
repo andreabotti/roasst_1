@@ -3,11 +3,12 @@ url = "https://pypi.python.org/simple"
 verify_ssl = true
 
 [packages]
-dj-database-url = "*"
-django = "*"
+dash = "*"
+dash-renderer = "*"
+dash-core-components = "*"
+dash-html-components = "*"
+plotly = "*"
 gunicorn = "*"
-psycopg2 = "*"
-whitenoise = "*"
 
 [requires]
 python_version = "3.6"
