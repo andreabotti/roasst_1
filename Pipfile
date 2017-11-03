@@ -1,14 +1,20 @@
 [[source]]
+
 url = "https://pypi.python.org/simple"
 verify_ssl = true
 
+
 [packages]
+
 dash = "*"
 dash-renderer = "*"
 dash-core-components = "*"
 dash-html-components = "*"
 plotly = "*"
 gunicorn = "*"
+"psycopg2" = "*"
+
 
 [requires]
+
 python_version = "3.6"
