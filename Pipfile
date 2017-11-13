@@ -10,9 +10,11 @@ dash = "*"
 dash-renderer = "*"
 dash-core-components = "*"
 dash-html-components = "*"
+dash-table-experiments = "*"
 plotly = "*"
 gunicorn = "*"
 "psycopg2" = "*"
+pandas = "*"
 
 
 [requires]
