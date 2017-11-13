@@ -3,10 +3,10 @@ import dash_core_components as dcc
 import dash_html_components as html
 import dash_table_experiments as dt
 
-from roasst.app import app
 from roasst import urls
-from roasst.pages import *
+from roasst.app import app
 
+from roasst.pages import *
 
 app.layout = html.Div([
     dcc.Location(id='url', refresh=False),
@@ -33,7 +33,3 @@ def display_page(pathname):
         return page_2_layout
     else:
         return index_page
-
-
-if __name__ == '__main__':
-    app.run_server(debug=True)

@@ -1,1 +1,1 @@
-web: gunicorn roasst.index:server --log-file -
+web: gunicorn roasst.run:server

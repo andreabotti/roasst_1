@@ -1,1 +1,1 @@
-web: python roasst_1.app:server --log-file -
+web: python -m roasst.run

@@ -30,20 +30,6 @@ A_list = [x for x in sorted(df_acr_large['@ach'].unique() ) ]
 A_options = [{'label': x, 'value': x} for x in sorted(df_acr_large['@ach'].unique() ) ]
 ##########
 
-##########
-# page_1_layout = html.Div([
-#     html.H3('App 1'),
-#     dcc.Dropdown(
-#         id='app-1-dropdown',
-#         options=[
-#             {'label': 'App 1 - {}'.format(i), 'value': i} for i in [
-#                 'NYC', 'MTL', 'LA'
-#             ]
-#         ]
-#     ),
-#     html.Div(id='app-1-display-value'),
-#     dcc.Link('Go to App 2', href=urls.page_2)
-# ])
 # ROASST App
 page_1_layout = html.Div(
     [
@@ -162,66 +148,67 @@ page_1_layout = html.Div(
         'margin-left': 'auto', 'margin-right': 'auto', 'padding': '20', 'padding-top': '20', 'padding-bottom': '20',
     },
 )
-#
-#
-# @app.callback(
-#     Output('chart_bar_runperiod', 'figure'),
-#     [Input('input_T', 'value'), Input('input_N', 'value'), Input('input_L', 'value'),
-#      Input('input_A', 'value'), Input('input_WB', 'value')]
-# )
-# def update_graph_runperiod(T_value, N_value, F_value, A_value, W_value):
-#     dfi = df_acr_large
-#     b = dfi[ (dfi['T'] == T_value) & (dfi.N == N_value) & (dfi.F == F_value) & (dfi.WB == W_value) & (dfi.A == A_value) ].index.tolist()
-#     print(b)
-#
-#     # df_chart_rp = df_acr.loc[b]
-#     df_chart_rp = df_acr_large.sort_values(['BD1_TM52_C1'])
-#     return {
-#         'data': [go.Bar(
-#             x = df_chart_rp['BD1_TM52_C1'],
-#             y = df_chart_rp.index,
-#             orientation='h',
-#             marker = dict(color = 'rgba(0,0,0,0.3)'),
-#             )],
-#         'layout': {
-#             'autosize':False,
-#             'height': 600,
-#             'margin': {'l': 40, 'b': 40, 'r': 40, 't': 60},
-#             'xaxis': {'range':[0, 0.8],},
-#             'yaxis': {'showticklabels':False,},
-#             }
-#     }
-#
-# @app.callback(
-#     Output('chart_scatter_runperiod', 'figure'),
-#     [Input('input_T', 'value'), Input('input_N', 'value'), Input('input_L', 'value'),
-#      Input('input_A', 'value'), Input('WB_value', 'value')]
-# )
-# def update_graph_runperiod(T_value, N_value, F_value, A_value, WB_value):
-#     dfi = df_acr_large
-#     b = dfi[(dfi['T'] == T_value) & (dfi.N == N_value) & (dfi.F == F_value) & (dfi.WB == WB_value) & (dfi.A == A_value)].index.tolist()
-#     print(b)
-#
-#     df_chart_rp = df_acr_large.loc[b]
-#     marker_size = 100 * df_chart_rp['BD1_TM52_C1']
-#     marker_text = str(float((100 * df_chart_rp['BD1_TM52_C1']).round(1))) +'%'
-#
-#     return {
-#         'data': [go.Scatter(
-#             x = df_chart_rp.index,
-#             y = df_chart_rp['BD1_TM52_C1'],
-#             mode='markers+text',
-#             marker=dict(size=marker_size),
-#             text=marker_text, textposition='auto',
-#             )],
-#         'layout': {
-#             # 'autosize':False,
-#             'height': 250,
-#             'margin': {'l':20, 'b':40, 'r':20, 't':40},
-#             'xaxis': {'showticklabels':False, 'showgrid':False},
-#             'yaxis': {'range':[0, 1], 'showgrid':False},
-#             'paper_bgcolor':'rgba(0,0,0,0)',
-#             'plot_bgcolor':'rgba(0,0,0,0)',
-#             }
-#     }
-#
+
+
+@app.callback(
+    Output('chart_bar_runperiod', 'figure'),
+    [Input('input_T', 'value'), Input('input_N', 'value'), Input('input_L', 'value'),
+     Input('input_A', 'value'), Input('input_WB', 'value')]
+)
+def update_graph_runperiod(T_value, N_value, F_value, A_value, W_value):
+    dfi = df_acr_large
+    b = dfi[ (dfi['T'] == T_value) & (dfi.N == N_value) & (dfi.F == F_value) & (dfi.WB == W_value) & (dfi.A == A_value) ].index.tolist()
+    print(b)
+
+    # df_chart_rp = df_acr.loc[b]
+    df_chart_rp = df_acr_large.sort_values(['BD1_TM52_C1'])
+    return {
+        'data': [go.Bar(
+            x = df_chart_rp['BD1_TM52_C1'],
+            y = df_chart_rp.index,
+            orientation='h',
+            marker = dict(color = 'rgba(0,0,0,0.3)'),
+            )],
+        'layout': {
+            'autosize':False,
+            'height': 600,
+            'margin': {'l': 40, 'b': 40, 'r': 40, 't': 60},
+            'xaxis': {'range':[0, 0.8],},
+            'yaxis': {'showticklabels':False,},
+            }
+    }
+
+
+@app.callback(
+    Output('chart_scatter_runperiod', 'figure'),
+    [Input('input_T', 'value'), Input('input_N', 'value'), Input('input_L', 'value'),
+     Input('input_A', 'value'), Input('WB_value', 'value')]
+)
+def update_graph_runperiod(T_value, N_value, F_value, A_value, WB_value):
+    dfi = df_acr_large
+    b = dfi[(dfi['T'] == T_value) & (dfi.N == N_value) & (dfi.F == F_value) & (dfi.WB == WB_value) & (dfi.A == A_value)].index.tolist()
+    print(b)
+
+    df_chart_rp = df_acr_large.loc[b]
+    marker_size = 100 * df_chart_rp['BD1_TM52_C1']
+    marker_text = str(float((100 * df_chart_rp['BD1_TM52_C1']).round(1))) +'%'
+
+    return {
+        'data': [go.Scatter(
+            x = df_chart_rp.index,
+            y = df_chart_rp['BD1_TM52_C1'],
+            mode='markers+text',
+            marker=dict(size=marker_size),
+            text=marker_text, textposition='auto',
+            )],
+        'layout': {
+            # 'autosize':False,
+            'height': 250,
+            'margin': {'l':20, 'b':40, 'r':20, 't':40},
+            'xaxis': {'showticklabels':False, 'showgrid':False},
+            'yaxis': {'range':[0, 1], 'showgrid':False},
+            'paper_bgcolor':'rgba(0,0,0,0)',
+            'plot_bgcolor':'rgba(0,0,0,0)',
+            }
+    }
+

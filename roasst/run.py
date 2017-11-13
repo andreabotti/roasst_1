@@ -1,4 +1,5 @@
-from roasst.server import server as application
+from roasst.index_page import app
+from roasst.app import server
 
-import roasst.app1.app
-import roasst.app2_single_url.app
+if __name__ == '__main__':
+    app.run_server(debug=True)
