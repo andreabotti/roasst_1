@@ -1,1 +1,1 @@
-web: gunicorn roasst.run:server
+web: gunicorn run:server
